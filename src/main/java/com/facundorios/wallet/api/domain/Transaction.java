@@ -1,4 +1,4 @@
-package domain;
+package com.facundorios.wallet.api.domain;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
@@ -31,6 +31,15 @@ public class Transaction {
     private LocalDateTime createdAt;
 
     public Transaction() {}
+
+    public Transaction(UUID sourceAccountId, UUID destinationAccountId, BigDecimal amount, String type, String status) {
+        this.id = UUID.randomUUID();
+        this.sourceAccountId = sourceAccountId;
+        this.destinationAccountId = destinationAccountId;
+        this.amount = amount;
+        this.type = type;
+        this.status = status;
+    }
 
     @PrePersist
     protected void onCreate() {

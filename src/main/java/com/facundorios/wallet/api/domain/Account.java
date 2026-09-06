@@ -1,6 +1,7 @@
-package domain;
+package com.facundorios.wallet.api.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import javax.naming.Name;
 import java.util.UUID;
@@ -25,4 +26,11 @@ public class Account {
     private Long version;
 
     public Account() {}
+    public Account(UUID userId, String aliasCvu, String currency) {
+        this.id = UUID.randomUUID();
+        this.userId = userId;
+        this.aliasCvu = aliasCvu;
+        this.currency = currency;
+        this.version = 0L; // Inicializamos la versión del bloqueo optimista
+    }
 }
