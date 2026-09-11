@@ -23,6 +23,10 @@ public class Account {
     @Column(nullable = false)
     private String currency;
 
+    public String getCurrency() {
+        return currency;
+    }
+
     @Column(nullable = false)
     private BigDecimal balance;
 
