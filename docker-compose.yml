@@ -7,9 +7,12 @@ services:
       POSTGRES_DB: wallet_db
     ports:
       - "5432:5432"
+    volumes:
+          - postgres_data:/var/lib/postgresql/data
 
   api:
     build: .
+    profiles: ["app", "all"]
     ports:
       - "8080:8080"
     depends_on:
@@ -18,3 +21,5 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/wallet_db
       SPRING_DATASOURCE_USERNAME: facu
       SPRING_DATASOURCE_PASSWORD: admin_local
+volumes:
+  postgres_data:
