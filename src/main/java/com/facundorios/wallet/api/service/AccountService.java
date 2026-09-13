@@ -36,8 +36,12 @@ public class AccountService {
     if(!sourceAccount.getCurrency().equals(destinationAccount.getCurrency())) {
         throw new IllegalArgumentException("Source and destination accounts must have the same currency");
     }
-    if (sourceAccount.getBalance().compareTo(amount) <= 0) {
+    if (sourceAccount.getBalance().compareTo(amount) < 0) {
         throw new IllegalArgumentException("Insufficient funds"); //jaja sos pobre lero lero
+    }
+    String destAlias = destinationAccount.getAliasCvu();
+    if (destAlias==null || destAlias.isEmpty()) {
+        throw new IllegalArgumentException("Destination account does not have a valid alias");
     }
     sourceAccount.setBalance(sourceAccount.getBalance().subtract(amount));
     destinationAccount.setBalance(destinationAccount.getBalance().add(amount));

@@ -51,4 +51,12 @@ public class Account {
         this.balance = BigDecimal.ZERO;
         this.version = 0L; // Inicializamos la versión del bloqueo optimista
     }
+
+    public void setAliasCvu(String aliasCvu) {
+        this.aliasCvu = aliasCvu;
+    }
+
+    public String getAliasCvu() {
+        return aliasCvu;
+    }
 }

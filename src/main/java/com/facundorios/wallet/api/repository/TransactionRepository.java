@@ -8,6 +8,5 @@ import java.util.List;
 @SuppressWarnings("NullableProblems")
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, UUID> {
-    // Busca todas las transacciones donde la cuenta sea origen O destino
     List<Transaction> findBySourceAccountIdOrDestinationAccountId(UUID sourceId, UUID destinationId);
 }
